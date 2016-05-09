@@ -1,3 +1,5 @@
+![Projekt Ukko image](http://project-ukko.net/assets/ukko-teaser-fb.png)
+
 # Project Ukko: Open Source version of UI code
 
 This is the Open Source version of the Project Ukko web application (http://project-ukko.net).
