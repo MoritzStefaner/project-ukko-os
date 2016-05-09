@@ -7,6 +7,7 @@ This is the Open Source version of the Project Ukko web application (http://proj
 ## Code credits
 
 All original code (c) by Moritz Stefaner and Dominikus Baur, 2015-2016
+
 Please do not redistribute or reuse without keeping all copyright notices, references to the github repository and the project website intact.
 
 ## License
@@ -16,15 +17,24 @@ Apache 2.0, see https://github.com/MoritzStefaner/project-ukko-os/blob/master/LI
 ## Project credits
 
 Project Ukko is a Future Everything and BSC project for EUPORIAS.
+
 Data visualisation by Moritz Stefaner.
+
 Project Ukko director Drew Hemment.
 
+
 Scientific coordination: Melanie Davis, Isadora Jiménez, Paco Doblas-Reyes, Carlo Buontempo
+
 RESILIENCE seasonal predictions: Veronica Torralba, Nube González-Reviriego, Paco Doblas-Reyes
+
 Based on ECMWF seasonal predictions by RESILIENCE.
+
 Visual identity design: Stefanie Posavec
+
 UI development support: Dominikus Baur
+
 Project management: Tom Rowlands
+
 Wind power capacity data was generously provided by thewindpower.net.
 
 EUPORIAS is a project funded by the EU 7th Framework Programme (GA 308291) and led by the Met Office.
