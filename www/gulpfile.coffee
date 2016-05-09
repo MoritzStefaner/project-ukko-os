@@ -26,6 +26,12 @@ banner = """
 authors: #{pkg.authors}
 version: #{pkg.version}
 date: #{new Date()}
+
+Project Ukko
+https://github.com/MoritzStefaner/project-ukko-os
+Licensed under Apache 2.0
+(c) by Moritz Stefaner and Dominikus Baur, 2015-2016
+
 """
 
 configDev =

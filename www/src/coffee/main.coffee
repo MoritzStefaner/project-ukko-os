@@ -1,3 +1,10 @@
+"""
+Project Ukko
+https://github.com/MoritzStefaner/project-ukko-os
+(c) by Moritz Stefaner and Dominikus Baur, 2015-2016
+
+"""
+
 svg = null
 data = null
 map = null
