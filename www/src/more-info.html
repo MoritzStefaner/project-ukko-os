@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  @@include('_header.html')
+  @@include('_css.html')
+</head>
+
+<body class="landing-page more-info-page">
+  <div class="wrapper">
+    @@include('_navigation.html')
+    <div class="logo">
+
+      <div class="logo-element">
+        <a href="http://project-ukko.net">
+          <h3>Project</h3>
+          <h1>UKKO</h1>
+          <img src="assets/ukko-logo-full.svg" alt="" />
+        </a>
+        <p>
+          Developed as part of the <br><a href="http://resilience.euporias.eu/en" target="_blank"><span class="emph">Resilience prototype</span></a><br>in the
+          <a href="http://www.euporias.eu/" target="_blank"><span>EUPORIAS</span></a>
+          project
+        </p>
+
+      </div>
+      <div class="subtitle">
+        <h2>
+          Seasonal Wind Predictions
+          for the Energy Sector
+        </h2>
+      </div>
+    </div>
+
+    <div class="content row">
+     <script src="https://hackpad.com/YNPgFMjIVMJ.js?format=html"></script><noscript><div>View <a href="https://hackpad.com/YNPgFMjIVMJ">Projekt Ukko: Background Information</a> on Hackpad.</div></noscript>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+     <script>
+       $('p>img').unwrap();
+       $('p').each(function() {
+          var $this = $(this);
+          if($this.html().replace(/\s|&nbsp;/g, '').length == 0)
+              $this.remove();
+      });
+     </script>
+    </div>
+
+    <div class="row credits">
+      <h2>Produced by</h2>
+
+        <a href = "http://www.ic3.cat/" target="_blank"><img src="assets/logo-ic3.png" style="margin-top: 5px; margin-left: -10px; " alt="" /></a>
+        <a href = "https://www.bsc.es/" target="_blank"><img src="assets/logo-bsc.svg" style="margin-left: 10px; margin-top: 20px; height: 45px;" alt="" /></a>
+        <a href = "http://futureeverything.org/" target="_blank"><img src="assets/logo-fe.svg" style="width: 160px; height: 120px; margin-top: -15px;" alt="" /></a>
+        <a href = "http://www.metoffice.gov.uk/" target="_blank"><img src="assets/logo-metoffice.png" style="margin-top: 0px;" alt="" /></a>
+        <a href = "http://www.euporias.eu/" target="_blank"><img src="assets/euporias-logo.png" style="margin-left: 10px; margin-top: 35px; width: 103px; height: 18px;" alt="" /></a>
+        <img src="assets/eu-logo.png" style="margin-top: 2px;"  alt="" />
+
+       @@include('_fullcredits.html')
+    </div>
+  </div>
+
+
+  @@include('_footer.html')
+
+  <!-- @@include('_scripts.html') -->
+  @@include('_ga.html')
+</body>
+</html>

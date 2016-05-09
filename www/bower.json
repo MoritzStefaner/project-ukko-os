@@ -1,0 +1,38 @@
+{
+  "name": "project-ukko",
+  "version": "2.5.0",
+  "homepage": "",
+  "authors": [
+    "Moritz Stefaner <moritz@stefaner.eu>",
+    "Dominikus Baur <do@minik.us>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.6.0",
+    "d3": "~3.4.1",
+    "jquery": "1.9.1",
+    "d3-jetpack": "https://github.com/gka/d3-jetpack.git",
+    "couchdb-jquery-couch": "https://github.com/apache/couchdb-jquery-couch.git",
+    "pixi.js": "~3.0.7",
+    "jquery.fitvids": "fitvids#~1.1.0"
+  },
+  "overrides": {
+    "jquery": {
+      "main": "jquery.min.js"
+    },
+    "d3-jetpack": {
+      "main": "d3-jetpack.js"
+    },
+    "pixi.js": {
+      "main": "bin/pixi.js"
+    }
+  }
+}

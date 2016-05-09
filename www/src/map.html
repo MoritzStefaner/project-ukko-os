@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  @@include('_header.html')
+  @@include('_css.html')
+  <script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body class="map-page">
+  <div class="mousetip">
+    <span class="tip"></span>
+  </div>
+
+    <div class="logo">
+      <a href="index.html">
+      <div class="version">
+        @@VERSION
+      </div>
+      <img src="assets/ukko-logo-wordmark.svg" alt="" />
+      </a>
+
+
+      <div class="loading-ani">
+        Loading…
+      </div>
+    </div>
+
+  <div class="map-legend collapsible">
+    <h3>Legend</h3>
+    <div>
+      <div>
+        <h4>Skill</h4>
+        <span class="top">High</span>
+        <span class="bottom">Low</span>
+        <canvas></canvas>
+      </div>
+      <div>
+        <h4>Predicted wind speed</h4>
+        <span class="top">High</span>
+        <span class="bottom">Low</span>
+        <canvas></canvas>
+      </div>
+      <div id="change_legend">
+        <h4>Predicted change</h4>
+        <span class="top">Increase</span>
+        <span class="bottom">Decrease</span>
+        <canvas></canvas>
+      </div>
+      <div id="windpower_legend">
+        <h4>Installed Wind Power</h4>
+        <span class="top">High</span>
+        <span class="bottom">Low</span>
+        <canvas></canvas>
+      </div>
+    </div>
+  </div>
+
+		<div id="debug">
+
+      <div id="num-els"><span class="value"></span></div>
+      <div id="bounds"></div>
+
+      <!-- <hr> -->
+<!--
+      Map shows only cells with RPSS skill values above zero<br>
+      opacity = RPSS score<br>
+      width = avg. predicted wind speed<br>
+      tilt = avg predicted wind speed compared to historic mean (up = higher, down = lower) -->
+
+		</div>
+
+    <div id="options" class="collapsible collapsed">
+      <h3>Settings / Info</h3>
+      <div>
+        <h4>
+          Display mode
+        </h4>
+        <div class="selection-list mode">
+          <a data-mode="trend" class="selected">Skill, wind speed and trend</a>
+          <a data-mode="skill" class="">Skill and wind speed</a>
+          <!-- <a href="" data-mode="strength" class="">Only strength</a> -->
+        </div>
+
+        <h4>
+          Masking
+        </h4>
+        <ul class="selection-list mode">
+          <!-- <input type="checkbox" name="skill" id="skill">
+          <label for="skill">Hide regions without sufficient skill for prediction</label>
+          <br> -->
+          <input type="checkbox" name="mask_oceans" id="mask_oceans">
+          <label for="mask_oceans" >Hide oceans</label>
+          <br>
+          <input type="checkbox" name="show_windpower" id="show_windpower">
+          <label for="show_windpower" >Display wind power</label>
+          <br>
+          <input type="checkbox" name="high_contrast" id="high_contrast">
+          <label for="high_contrast" >High contrast map</label>
+        </ul>
+        <h4>
+          Model information
+        </h4>
+        <div class="info">
+          <div>
+            <span class="key">Seasonal prediction system</span>
+            <span class="value" id="prediction-system"></span>
+          </div>
+          <div>
+            <span class="key">Prediction start date</span>
+            <span class="value" id="prediction-start-date"></span>
+          </div>
+          <div>
+            <span class="key">Predicted season</span>
+            <span class="value" id="prediction-season"></span>
+          </div>
+          <div>
+           <a href="more-info.html" target="_blank">More background information</a>
+           </div>
+        </div>
+       </div>
+
+    </div>
+
+    <div id="details">
+       <div class="container">
+        <div class="panel" id="historic">
+
+          <h3>Observations</h3>
+
+
+          <div class="tooltip-attached help-spot">
+            <span class="icon">?</span>
+            <span class="tooltip">This chart displays the 10-m wind speed observations in the selected geographic region over the last 30 years. The third of years with the <em>highest</em> wind speeds (upper tercile) is marked in <span class="upper">yellow</span>, the third with the lowest ones (lower tercile) in <span class="lower">blue</span>.</span>
+          </div>
+          <div class="subtitle">Seasonal average wind speeds in m/s</div>
+          <div class="historic-mean tooltip-attached">
+            Median<br>
+            <span class="value">4.3</span>
+            <span class="tooltip">
+              The median wind speed observed in the past.
+            </span>
+          </div>
+          <div class="plot"></div>
+
+          <div class="legend">
+            <span class="number" id="start-year"></span>
+            <span class="number" id="end-year"></span>
+          </div>
+        </div>
+
+        <div class="panel" id="predictions">
+          <h3>Predictions</h3>
+
+          <div class="tooltip-attached help-spot">
+            <span class="icon">?</span>
+
+            <span class="tooltip"> This chart shows the calibrated ECMWF S4 prediction for the next season. Overall, 51 different simulations were run, resulting in a range of potential outcomes. We can best understand these in terms of the teciles resulting from past observations: How many of the simulations result in <span class="upper">relatively high </span> wind strengths, how many in <span class="lower">lower</span>?</span>
+          </div>
+
+          <div class="plot"></div>
+          <div class="legend">
+            <span class="number right" id="prediction-time"></span>
+          </div>
+           <div class="percentiles">
+            <div class="percentile upper">
+              <span class="number">0.0%</span>
+              <div class="upper label">upper</div>
+              <div class="tooltip-attached most-probable-icon">
+                <span class="icon">*</span>
+                <span class="tooltip">
+                This category of wind speeds is the most probable, according to our predictions.
+                </span>
+              </div>
+            </div>
+            <div class="percentile mid">
+              <span class="number">0.0%</span>
+              <div class="mid label">mid</div>
+              <div class="tooltip-attached most-probable-icon">
+                <span class="icon">*</span>
+                <span class="tooltip">
+                This category of wind speeds is the most probable, according to our predictions.
+                </span>
+              </div>
+            </div>
+            <div class="percentile lower">
+              <span class="number">0.0%</span>
+              <div class="lower label">lower</div>
+              <div class="tooltip-attached most-probable-icon">
+                <span class="icon">*</span>
+                <span class="tooltip">
+                This category of wind speeds is the most probable, according to our predictions.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="extra-info">
+       <div id="skill">
+          <h3>Skill</h3>
+
+          <div class="tooltip-attached help-spot">
+            <span class="icon">?</span>
+            <span class="tooltip">
+              The skill score is a statistical measure of how well the prediction system have performed in the past, in the selected region, and it can guide about the expected performance of the forecasts in the future. A score of 100% would mean that the prediction system performance is perfect. A score of 0% means our models were not better than just making a guess based on historic data, without any extra information from climate simulations.
+            </span>
+          </div>
+
+          <div class="number"></div>
+          <div class="plot">
+            <div class="bar">
+            </div>
+          </div>
+        </div>
+
+       <div id="power">
+          <h3>Installed Wind Power</h3>
+          <div class="tooltip-attached help-spot">
+            <span class="icon">?</span>
+            <span class="tooltip">
+              This chart shows the currently installed wind power in the selected region, which reflects the production capacity in that particular area. (This data was generously provided by <a href="http://www.thewindpower.net">windpower.net</a>)
+            </span>
+          </div>
+          <div class="number"></div>
+          <div class="plot">
+          </div>
+        </div>
+
+       </div>
+
+       <a class="close button"><i class="fa fa-close"></i><span>close</span></a>
+
+      </div>
+
+    </div>
+
+    @@include('_navigation.html')
+    <div id="map">    </div>
+    <div id="map-overlay-bg">    </div>
+    <div id="glyphs">
+
+    </div>
+
+
+    @@include('_footer.html')
+
+    @@include('_scripts.html')
+    @@include('_ga.html')
+  </body>
+</html>

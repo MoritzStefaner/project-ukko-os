@@ -1,0 +1,7 @@
+{
+	"years": [1981, 2014],
+	"predictionSeason": "Dec 2015 - Feb 2016",
+	"predictionSystem": "ECMWF S4",
+	"predictionStartDate": "Nov 01, 2015",
+	"jsonPath": "http://clients.stefaner.eu/ukko-data/json-2015/"
+}

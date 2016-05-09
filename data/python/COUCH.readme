@@ -1,0 +1,10 @@
+
+- Install couchDB
+
+- make sure to add the following lines to couch's local.ini:
+
+[httpd]
+enable_cors = true
+
+[cors]
+origins = *

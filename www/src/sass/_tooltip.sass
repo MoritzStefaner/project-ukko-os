@@ -1,0 +1,115 @@
+// Mixins
+
+@mixin tooltip($background-color: white, $arrow-base: 2em, $arrow-length: 1em, $border-width: 0, $border-color: false)
+
+  position: absolute
+  box-sizing: border-box
+  margin-bottom: $arrow-length
+  background-color: $background-color
+  cursor: default
+  opacity: 0
+  visibility: hidden
+  // color: #000
+
+  &:after
+    content: ""
+    position: absolute
+    top: 100%
+    left: 50%
+    width: 0
+    height: 0
+    border-top: ($arrow-length - $border-width) solid $background-color
+    border-left: ($arrow-base / 2 - $border-width) solid transparent
+    border-right: ($arrow-base / 2 - $border-width) solid transparent
+    margin-left: ($border-width - $arrow-base / 2)
+
+
+  @if $border-width
+    border: $border-width solid $border-color
+
+    &:before
+      content: ""
+      position: absolute
+      top: 100%
+      left: 50%
+      width: 0
+      height: 0
+      border-top: $arrow-length solid $border-color
+      border-left: ($arrow-base / 2) solid transparent
+      border-right: ($arrow-base / 2) solid transparent
+      margin-left: ($arrow-base / -2)
+
+
+
+// Mixins for prefixes
+
+@mixin keyframes($animation-name)
+  @-webkit-keyframes $animation-name
+    @content
+
+  @keyframes $animation-name
+    @content
+
+
+@mixin animation($animation-values)
+  -webkit-animation: $animation-values
+  animation: $animation-values
+
+@mixin transform($transform-values...)
+  -webkit-transform: $transform-values
+  transform: $transform-values
+
+// Animations
+
+@keyframes slide-up
+  0%
+    opacity: 0
+    visibility: visible
+    +transform(translateY(1em))
+
+  100%
+    opacity: 1
+    visibility: visible
+    +transform(translateY(0))
+
+
+// Example
+
+.tooltip-attached
+  position: relative
+  +clearfix
+  &:hover
+    .tooltip
+      +animation-delay(.5s)
+      +animation-name(slide-up)
+      +animation-duration(.3s)
+      +animation-iteration-count(1)
+      +animation-fill-mode(forwards)
+
+@mixin tipContainer
+  width: 20em
+  margin-left: -10em // center the tooltip
+  color: #a9bacc
+  padding: .5em .75em
+  line-height: 1.5
+  box-shadow: 0 .05em .15em rgba(black, .1)
+
+.tooltip
+  left: 50%
+  bottom: 100% // on top
+  +tipContainer
+  +tooltip(lighten(#0c1620, 20), 1em, .5em, .08em, rgba(#0c1620, .5))
+
+.mousetip
+  position: absolute
+  pointer-events: none
+  .tip
+    +tipContainer
+    width: 11em
+    margin-left: -5.5em // center the tooltip
+    +tooltip(lighten(#0c1620, 20), 1em, .5em, .08em, rgba(#0c1620, .5))
+    z-index: 9999999
+    position: absolute
+    visibility: hidden
+    opacity: 1
+    bottom: 10px

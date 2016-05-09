@@ -1,0 +1,874 @@
+// customize bootstrap variables here:
+@import bourbon/bourbon
+@import base/base
+@import neat/neat
+@import tooltip
+
+$mono: "Inconsolata", monospace
+$bg: #0c1620
+$lightblue: lighten($bg, 20)
+$border: 1px solid $lightblue
+$upperColor: #CAFF56
+$midColor: #e1e8da
+$lowerColor: #59D9FF
+$bgTranslucent: rgba($bg, .95)
+$chartOffsetY: 45px
+
+$z-top: 20
+$z-mid: 10
+$z-bottom: 1
+
+.upper
+	fill: $upperColor !important
+	stroke: $upperColor !important
+	color: $upperColor !important
+
+.mid
+	fill: $midColor !important
+	stroke: $midColor !important
+	color: $midColor !important
+
+.lower
+	fill: $lowerColor !important
+	stroke: $lowerColor !important
+	color: $lowerColor !important
+
+@mixin number
+	font-weight: 300
+	font-family: $mono
+
+.number
+	+number
+
+.big
+	font-size: 2em
+
+pre
+	font-family: $mono
+	font-size: 11px
+
+html
+	height: 100%
+	min-height: 100%
+	margin: 0
+	padding: 0
+
+body
+	background: $bg
+	font-weight: 400
+	color: mix($bg, #FFF, 20)
+	margin: 0
+	padding: 0
+
+@mixin caps
+	text-transform: uppercase
+	letter-spacing: .09em
+
+p
+	clear: both
+
+h1
+	+caps
+
+	padding: .1em .3em
+	font-size: 2em
+	font-weight: 700
+	display: block
+	float: left
+	margin: 0
+	color: #FFF
+
+h2
+	clear: both
+	padding: .7em 0 .3em
+	font-size: 1em
+	+caps
+	font-weight: 300
+	display: block
+	color: #FFF
+
+
+h3, h4
+	font-weight: 400
+	text-transform: uppercase
+	letter-spacing: 2px
+	color: #FFF
+	float: left
+
+h4
+	letter-spacing: 1.5px
+
+.wrapper
+	padding-top: 1em
+	+outer-container
+	min-height: 100%
+
+.button
+	display: block
+	cursor: pointer
+	padding: .6em .8em
+	background: rgba(#FFF, 0.1)
+	border-right: 1px solid rgba(#000, .5)
+	border-bottom: 1px solid rgba(#000, .5)
+	border-radius: 1px
+	color: #FFF
+	font-weight: 500
+	text-transform: uppercase
+	letter-spacing: .1em
+	+transition-property(background)
+	&:hover
+		background: rgba(#FFF, 0.2)
+		color: #FFF
+		i
+			opacity: .8
+	i
+		margin-right: .75em
+		opacity: .5
+
+.logo a
+	color: inherit
+
+.landing-page
+
+	background: #242E47 url(../assets/landing-page-bg.jpg) center center
+	background-size: cover
+	background-position: fixed
+	// min-height: 100%
+	min-width: 960px
+	padding: 0 2em
+	height: 100%
+
+
+	#vimeo-container
+		width: 100%
+		h3
+			display: block
+			position: static
+			clear: both
+		iframe
+			 display: block
+			 top: 40px
+			 background: rgba(#FFF, .05)
+			 border: 2px solid rgba(#fff, .1)
+
+	.logo
+		position: relative
+		// margin-bottom: 2em
+		+span-columns(8)
+		+shift(0)
+		>div
+			border-top: 1px solid rgba(#fff, .3)
+			padding: .5em 0
+
+		h1, h2, h3
+			// text-align: center !important
+			display: block
+			background: transparent
+			// float: none
+			line-height: 1.5
+			padding: 0
+			margin: 0 !important
+			color: #FFF
+			span
+				font-weight: 600
+		.logo-element
+			h1,h3
+				visibility: hidden
+			img
+				position: absolute
+				width: 220px
+				height: auto
+				left: -67px
+				top: 18px
+
+		.subtitle
+			+span-columns(12)
+			border-bottom: 1px solid rgba(#fff, .3)
+			margin-top: 4em
+			font-size: 1.2em
+		p
+			span
+				+caps
+				font-weight: 600
+
+			position: absolute
+			right: 270px
+			top: 25px
+			color: rgba(#FFF, .5)
+			text-align: left
+			.emph
+				color: rgba(#FFF, .85) !important
+			// width: 20em
+			// text-align: right
+			img
+				width: 80px
+				height: auto
+				display: inline
+				padding: 0 .3em
+				margin-top: .5em
+				opacity: .5
+
+		h1
+			font-size: 3.6em !important
+			margin-top: -.15em !important
+
+		h2
+			font-size: 1.25em !important
+
+		h3
+			font-size: 1.5em !important
+
+.row
+	clear: both
+	float: left
+	+clearfix
+	margin-top: 8em
+
+.teaser
+	+span-columns(3)
+	&.demo
+		position: relative
+		a
+			color: inherit !important
+		+span-columns(6)
+		+omega
+		.go
+			position: relative
+		.button
+			position: absolute
+			// background: rgba(#00181D, .8)
+			font-size: 2em
+			// bottom: 0
+			width: 100%
+			text-align: right
+			margin-top: -1.33em
+			// right: 0
+		&:hover
+			.button
+				background: rgba(#FFF, 0.2)
+				color: #FFF
+
+	img
+		width: 100%
+		height: auto
+		margin: 0 0 1.5em 0
+		background: rgba(#00181D, .3)
+		border: 2px solid rgba(#FFF, .1) !important
+		display: block
+	p
+		min-height: 14em
+
+.credits
+	+span-columns(12)
+	border-top: 1px solid rgba(#fff, .4)
+	+clearfix
+
+	color: mix($bg, #FFF, 40)
+	a
+		color: inherit
+		border-bottom: 1px solid mix($lowerColor, mix($bg, #FFF, 80), 00)
+
+		&:hover
+			color: mix($lowerColor, #FFF, 60)
+
+	p
+		border-top: 1px solid rgba(#fff, .4)
+		border-bottom: 1px solid rgba(#fff, .4)
+		padding: 1em 0
+		margin: 0 0 3em 0
+		+clearfix
+
+	img
+		// padding: 1em
+		margin-right: 2em
+		width: auto
+		height: 6em
+		float: left
+		opacity: .5
+
+.loading-ani
+	opacity: 0
+	transition: opacity 2s
+
+#options, .map-legend
+	opacity: 1
+	transition: opacity 1s
+	transition-delay: 0.5s
+
+body.loading
+	#options
+		opacity: 0
+		transition: opacity 0s
+		transition-delay: 0
+	.map-legend
+		opacity: 0
+		transition: opacity 0s
+		transition-delay: 0
+	.loading-ani
+		opacity: 1
+		transition: opacity 2s
+
+
+.map-page
+	overflow: hidden
+	height: 100%
+	.logo
+		.loading-ani
+			position: absolute
+			top: 100px
+			left: 30px
+
+
+		position: absolute
+		z-index: $z-top
+		color: #FFF
+		// text-shadow: #000000 2px 2px 2px
+		padding: .5em
+		width: 150px
+
+		img
+			width: 100%
+			height: auto
+			position: absolute
+			top: 0
+			left: 0
+			padding: 20px 20px 10px 20px
+			background: rgba(lighten($bg, 18), .85)
+			// margin: 50px 0
+
+	.version
+		display: block
+		// background: rgba($bg, .7)
+		position: absolute
+		right: 5px
+		top: 0
+		font-size: .85em
+		padding: 3px
+		opacity: .3
+		z-index: $z-top
+
+	h1,h2
+		background: rgba($bg, .9)
+		visibility: hidden
+	h2
+		padding: .7em .6em .3em
+
+=map-overlay
+	background: rgba(lighten($bg, 10), 1)
+	// border: 1px solid lighten($bg, 15)
+	position: absolute
+	z-index: $z-mid
+	margin: 5px
+
+	h4
+		font-size: .8em
+	h3, h4
+		float: none
+
+	h3
+		padding: 5px 5px 5px 10px
+		background: lighten($bg, 16)
+		color: mix($bg, #FFF, 30)
+		margin: 0
+		cursor: pointer
+		font-weight: 600
+		&:hover
+			background: lighten($bg, 21)
+
+	&.collapsed
+		>div
+			display: none
+
+
+
+#options
+	+map-overlay
+	width: 190px
+	right: 105px
+	// font-size: .9em
+	h4
+		padding: 10px 5px 0 10px
+		margin-top: 0
+		border-top: 1px solid mix($bg, #FFFFFF, 75)
+	div
+		padding: 0
+
+	.info
+		padding: 5px 10px
+		span
+			display: block
+			float: none
+		.key
+			opacity: .5
+		.value
+			margin-bottom: 10px
+
+	.selection-list
+		margin-bottom: 20px
+		a
+			display: block
+			float: none
+			padding: 5px 10px
+			color: rgba(#FFF, .5)
+			cursor: pointer
+			&.selected
+				color: rgba(#FFF, 1)
+				background: rgba(#FFF, .1)
+			&:hover
+				color: rgba(#FFF, .9)
+				background: rgba(#FFF, .05)
+
+
+	input, label
+		display: inline
+
+	input
+		font-size: 1.2em
+		opacity: .5
+		margin-left: 10px
+		// opacity: .5
+		// background: lighten($bg, 20)
+		& + label
+			opacity: .5
+		&:checked
+			opacity: 1
+			& + label
+				opacity: 1
+
+	label
+		clear: both
+		font-weight: normal
+
+.map-legend
+	+map-overlay
+	right: 0
+	top: 0
+	width: 100px
+	// height: 550px
+
+	div
+		div
+			position: relative
+			h4
+				padding: 0 10px
+				margin: 0
+				border-top: 1px solid mix($bg, #FFFFFF, 75)
+			span
+				display: block
+				position: absolute
+				right: 10px
+				font-size: .85em
+				text-align: right
+
+				&.bottom
+					bottom: 25px
+
+				&.top
+					bottom: 90px
+
+				&.middle
+					bottom: 50px
+
+
+			canvas
+				// position: absolute
+				margin: 0 0 0 10px
+				height: 100px
+				width: 60px
+				// border: 1px solid
+				position: static
+
+
+			h4
+				font-size: .8em
+				padding: 10px
+				// position: absolute
+
+
+#debug
+	font-size: .85em
+	// background: rgba($bg, .7)
+	color: #FFF
+	padding: 1em
+	position: absolute
+	top: 1em
+	left: 500px
+	z-index: $z-top
+	font-family: $mono
+
+	div
+		float: right
+		padding: 0 1em
+	.value, #bounds
+
+		// font-size: 1.5em
+
+svg
+	display: block
+
+
+
+#details
+	display: none
+	position: absolute
+	bottom: 0
+	left: 0
+	right: 0
+	z-index: $z-top
+	height: 260px
+
+	background: $bgTranslucent
+	border-top: $border
+	padding: 1em 0 0 1em
+
+	.container
+
+		margin: 0
+		padding: 0
+
+		.panel
+			float: left
+			width: 500px
+			margin: 0
+			height: 230px
+			.legend
+				z-index: $z-top
+				position: absolute
+				bottom: 0px
+				left: 30px
+				right: 50px
+				color: mix($bg, #FFF, 30)
+				background: $bg
+				span
+					position: absolute
+					display: block
+					bottom: 0
+					z-index: $z-top
+
+					&:nth-child(2)
+						right: 50px
+					&.right
+						right: 10px
+
+		.subtitle
+			position: absolute
+			top: 20px
+			color: mix($bg, #FFF, 50)
+
+		.percentiles
+			position: absolute
+			right: 0
+			top: 0px
+			z-index: $z-top
+			.percentile
+				padding: .5em 2.5em .5em 1.5em
+				position: relative
+				left: 2em
+				.most-probable-icon
+					display: none
+					position: absolute
+					right: 5px
+					top: 0
+					color: mix($bg, #FFF, 60)
+					.icon
+						font-size: 3em
+				&.most-probable
+					.most-probable-icon
+						display: block
+
+				.label
+					+caps
+					font-size: .8em
+
+	svg
+		display: block
+		position: absolute
+		left: 0px
+		top: $chartOffsetY
+		rect.bg
+			fill: #000
+
+		.dot
+			stroke: $bgTranslucent !important
+			stroke-opacity: 0.01
+			opacity: 1
+			stroke-width: 5
+
+		.mid-range-marker
+			fill: #FFF
+			fill-opacity: .1
+			pointer-events: none
+
+	.axis
+		text
+			+number
+			fill: mix($bg, #FFF, 20)
+			font-size: 14px
+		line
+			stroke: #FFF
+			opacity: .6
+			stroke-dasharray: 1px 7px
+			stroke-width: 1px
+		path
+			fill: none
+
+	#predictions
+		position: absolute
+		z-index: $z-mid
+		left: 500px
+		width: 350px
+
+		.dot
+			opacity: .8
+			&:hover
+				opacity: 1
+		.ray
+			&.upper
+				stroke: darken($upperColor, 35) !important
+
+			&.mid
+				stroke: darken($midColor, 40) !important
+
+			&.lower
+				stroke: darken($lowerColor, 20) !important
+
+			opacity: .2
+			&:hover
+				opacity: 1
+
+	#historic
+		// width: 900px
+		position: absolute
+		z-index: $z-mid
+		.historic-mean
+			position: absolute
+			left: 420px
+			z-index: $z-top
+			// top: 100px
+			text-align: right
+			padding-bottom: 5px
+			margin-bottom: -$chartOffsetY
+			border-bottom: 1px solid #FFF
+			color: mix($bg, #FFF, 60)
+			background: $bgTranslucent
+			span.value
+				color: mix($bg, #FFF, 20)
+				+number
+			.tooltip
+				text-align: left
+
+		.tooltip-attached
+			float: left
+
+	.extra-info
+		position: absolute
+		left: 950px
+		width: 250px
+
+		>div
+			width: 220px
+			margin-bottom: 4em
+			float: left
+			position: relative
+			// margin-left: 50px
+
+			.plot
+				clear: both
+				float: left
+				background: lighten($bg, 15)
+				position: relative
+				height: .5em
+				width: 100%
+				padding: 1px
+
+				.bar
+					position: absolute
+					background: #CCC
+					left: 0%
+					right: 0%
+					bottom: 0%
+					top: 0%
+			.number
+
+				+number
+				font-size: 1.5em
+				color: #FFF
+				opacity: .6
+				clear: both
+				float: left
+
+	.close.button
+		// width: 150px
+		position: absolute
+		right: 10px
+
+		background: rgba($lightblue, .66)
+		color: #FFF
+
+		&:hover
+			background: rgba($lightblue, .8)
+
+		i
+			opacity: .6
+			margin-right: 0
+
+		span
+			display: none
+
+		&:hover
+			span
+				margin-left: .75em
+				display: inline
+
+	#skill
+		.number
+			clear: both
+
+.jump-left
+	margin-right: 50px
+
+.help-spot
+	display: block
+	float: right
+	background-color: rgba(lighten($lightblue, 40), .33)
+	border-radius: 100%
+	width: 18px
+	height: 18px
+	color: $bg
+	// margin-top: -2px
+	margin-left: 10px
+	+transition-property(color background-color)
+	+transition-duration(1s)
+	line-height: 18px !important
+	.icon
+		display: inline-block
+		text-align: center
+		width: 100%
+		font-weight: 600
+		font-size: .85em
+
+		pointer-events: none
+
+	&:hover
+		background-color: rgba(lighten($lightblue, 40), .8)
+		// color: rgba(#FFF, .9)
+		.icon
+
+
+
+#map,  canvas, #map-overlay-bg
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	cursor: inherit
+	// pointer-events: none
+
+.pixi
+	position: absolute
+	pointer-events: none
+	// zoom: 50%
+	z-index: $z-bottom
+	canvas
+		pointer-events: none
+		z-index: $z-bottom
+		// width: 100%
+		// height: 100%
+
+#map
+	background: $bg
+	z-index: 0
+
+.mapboxgl-canvas.mapboxgl-interactive
+	cursor: cross !important
+
+#map-overlay-bg
+	+linear-gradient(to right, hsl(207, 100%, 12%),hsl(266, 70%, 12%))
+	opacity: .5
+	// mix-blend-mode: lighten
+	// display: none
+	pointer-events: none
+	// display: none
+	z-index: $z-bottom
+svg
+	z-index: $z-bottom
+
+canvas.map-overlay
+	z-index: $z-bottom
+	pointer-events: none
+
+.leaflet-control-container
+	position: absolute
+	z-index: $z-mid
+	bottom: 0px
+	width: 100px
+	height: 150px
+	*
+		border-color: $bg
+	a
+		background-color: lighten($bg, 60)
+		border-color: $bg !important
+	.leaflet-top
+		top: auto
+		bottom: 40px
+		left: 0px
+		zoom: 1.2
+	.mapbox-logo
+		opacity: .5
+
+.more-info-page
+
+	.content
+		width: 100%
+		// max-width: 40em
+		font-size: 18px
+		margin-top: 3em auto 0 auto
+		color: mix($bg, #FFF, 30)
+		a
+			text-decoration: none
+			color: mix(#53CEFA, #DDD, 60)
+			&:hover
+				background: mix(#53CEFA, #FFF, 90)
+				color: $bg
+
+		u
+			text-decoration: none
+
+		p>b
+			color: mix(#FFF, $bg, 90)
+			border-left: 2px solid mix(#FFF, $bg, 30)
+			padding-left: 18px
+			margin-left: -20px
+			margin-top: 3.5em
+			display: block
+			text-transform: uppercase
+			font-weight: 500
+			letter-spacing: .1em
+
+		h1
+			display: block
+			position: static
+			padding: 0
+			font-weight: 400
+			letter-spacing: .05em
+			text-transform: none
+			margin: 0 0 1em
+		h2
+			margin: 2em 0 .5em
+			font-size: 1.5em
+			border-top: 1px solid mix($bg, #FFF, 60)
+			padding: 1em 0
+			text-transform: uppercase
+			font-weight: 600
+			max-width: 26.66em
+
+		h3, h4
+
+		img
+			border: 1px solid mix($bg, #FFF, 60)
+			width: 100%
+			height: auto
+		p, ul, ol
+			margin: 1.5em 0
+			max-width: 40em

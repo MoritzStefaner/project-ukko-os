@@ -1,0 +1,30 @@
+_prefs: 
+  baselayer: ''
+  mapid: moritzstefaner.7ff13712
+  saveCenter: false
+_properties: 
+  bridge: 
+    "group-by": layer
+attribution: ''
+bounds: 
+  - -180
+  - -85.0511
+  - 180
+  - 85.0511
+center: 
+  - -122.7887
+  - 47.3983
+  - 8
+description: ''
+format: "png8:m=h:c=32"
+interactivity_layer: ''
+layers: null
+maxzoom: 9
+minzoom: 0
+name: EUPORIAS
+source: "mapbox:///mapbox.mapbox-terrain-v1,mapbox.mapbox-streets-v5"
+styles: 
+  - vars.mss
+  - bg.mss
+  - labels.mss
+template: ''

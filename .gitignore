@@ -1,0 +1,11 @@
+.sass-cache
+www/dist
+www/dev
+/data/csv
+/data/json
+node_modules
+bower_components
+*.sublime-project
+*.sublime-workspace
+.ftppass
+data/json-2015
